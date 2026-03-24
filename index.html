@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Lin Lei | PhD Candidate in Marketing</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Mono:wght@300;400&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F7F4EF;
+      --ink: #1A1714;
+      --warm-gray: #8A8580;
+      --sage: #6B7B6E;
+      --accent: #B85C38;
+      --light-line: #E3DED7;
+      --card-bg: #FDFBF8;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background: var(--cream);
+      color: var(--ink);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.2rem 4rem;
+      background: rgba(247,244,239,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--light-line);
+    }
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 400; letter-spacing: 0.08em;
+      color: var(--ink);
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--warm-gray); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 5rem;
+    }
+
+    .hero-left {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 6rem 5rem 6rem 8rem;
+      position: relative;
+    }
+    .hero-left::after {
+      content: '';
+      position: absolute; right: 0; top: 15%; bottom: 15%;
+      width: 1px; background: var(--light-line);
+    }
+
+    .hero-tag {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3.5rem, 5vw, 5.5rem);
+      font-weight: 300; line-height: 1.05;
+      color: var(--ink); margin-bottom: 0.3rem;
+    }
+    h1 em { font-style: italic; color: var(--accent); }
+
+    .hero-subtitle {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem; font-weight: 300; font-style: italic;
+      color: var(--warm-gray); margin-bottom: 2rem;
+    }
+
+    .hero-bio {
+      font-size: 0.95rem; color: #5A5550; max-width: 42ch;
+      margin-bottom: 2.5rem; line-height: 1.8;
+    }
+
+    .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn {
+      display: inline-block;
+      padding: 0.65rem 1.6rem;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase;
+      text-decoration: none; border-radius: 2px;
+      transition: all 0.2s;
+    }
+    .btn-primary {
+      background: var(--ink); color: var(--cream);
+    }
+    .btn-primary:hover { background: var(--accent); }
+    .btn-outline {
+      border: 1px solid var(--ink); color: var(--ink);
+    }
+    .btn-outline:hover { border-color: var(--accent); color: var(--accent); }
+
+    .hero-right {
+      display: flex; align-items: center; justify-content: center;
+      padding: 6rem 8rem 6rem 5rem;
+      position: relative;
+    }
+
+    .photo-frame {
+      position: relative;
+      width: min(340px, 90%);
+    }
+    .photo-frame::before {
+      content: '';
+      position: absolute;
+      top: 20px; left: 20px; right: -20px; bottom: -20px;
+      border: 1px solid var(--accent);
+      z-index: 0; border-radius: 2px;
+    }
+    .photo-frame img {
+      width: 100%; border-radius: 2px;
+      display: block; position: relative; z-index: 1;
+      filter: grayscale(10%) contrast(1.02);
+    }
+
+    .affiliation-badge {
+      position: absolute; bottom: -2rem; left: -2rem;
+      background: var(--card-bg);
+      border: 1px solid var(--light-line);
+      padding: 1rem 1.4rem; z-index: 2;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+    .badge-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--warm-gray); display: block; margin-bottom: 0.25rem;
+    }
+    .badge-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 0.95rem; color: var(--ink);
+    }
+
+    /* ── SECTIONS ── */
+    section { padding: 7rem 8rem; }
+    section:nth-child(even) { background: var(--card-bg); }
+
+    .section-header {
+      display: flex; align-items: center; gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    .section-num {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.2em;
+      color: var(--accent);
+    }
+    h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem; font-weight: 300;
+    }
+
+    /* ── RESEARCH ── */
+    .research-grid { display: grid; gap: 1.5rem; }
+
+    .paper-card {
+      background: var(--cream);
+      border: 1px solid var(--light-line);
+      padding: 1.8rem 2rem;
+      display: grid; grid-template-columns: auto 1fr; gap: 1.5rem;
+      align-items: start;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .paper-card:hover {
+      border-color: var(--accent);
+      box-shadow: 0 4px 24px rgba(184,92,56,0.08);
+    }
+
+    .paper-index {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; color: var(--accent);
+      padding-top: 0.2rem;
+    }
+
+    .paper-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.15rem; font-weight: 400; margin-bottom: 0.5rem;
+      color: var(--ink);
+    }
+    .paper-authors { font-size: 0.82rem; color: var(--warm-gray); margin-bottom: 0.6rem; }
+    .paper-authors strong { color: var(--ink); font-weight: 500; }
+
+    .paper-meta { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: center; }
+    .journal-tag {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic; font-size: 0.9rem; color: var(--sage);
+    }
+    .status-pill {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.58rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.2rem 0.7rem; border-radius: 20px;
+    }
+    .status-review { background: #EDF3EE; color: var(--sage); }
+    .status-rr { background: #FBF0EC; color: var(--accent); }
+    .status-progress { background: #F0EDF8; color: #7B6BA8; }
+    .status-published { background: #EDF3EE; color: var(--sage); border: 1px solid var(--sage); }
+    .status-jmp { background: #1A1714; color: #F7F4EF; border: 1px solid #B85C38; font-weight: 500; }
+
+    /* ── INTERESTS ── */
+    .interests-grid {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem;
+    }
+    .interest-card {
+      padding: 2rem 1.5rem; text-align: center;
+      border: 1px solid var(--light-line);
+      background: var(--cream);
+    }
+    .interest-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
+    .interest-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; line-height: 1.4;
+    }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; }
+    .timeline::before {
+      content: ''; position: absolute; left: 10px; top: 8px; bottom: 0;
+      width: 1px; background: var(--light-line);
+    }
+
+    .timeline-item {
+      display: grid; grid-template-columns: 1fr; padding-left: 3rem;
+      position: relative; margin-bottom: 2.5rem;
+    }
+    .timeline-item::before {
+      content: ''; position: absolute; left: 5px; top: 8px;
+      width: 11px; height: 11px; border-radius: 50%;
+      background: var(--cream); border: 2px solid var(--accent);
+    }
+
+    .tl-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--warm-gray); margin-bottom: 0.3rem;
+    }
+    .tl-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; font-weight: 400; margin-bottom: 0.2rem;
+    }
+    .tl-sub { font-size: 0.85rem; color: var(--warm-gray); }
+
+    /* ── TEACHING ── */
+    .teaching-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .course-card {
+      padding: 1.8rem; border: 1px solid var(--light-line);
+      background: var(--cream);
+    }
+    .course-code {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.65rem; letter-spacing: 0.15em; color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .course-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.05rem; margin-bottom: 0.5rem;
+    }
+    .course-role { font-size: 0.82rem; color: var(--warm-gray); }
+
+    /* ── AWARDS ── */
+    .awards-list { list-style: none; }
+    .award-item {
+      display: flex; justify-content: space-between; align-items: baseline;
+      padding: 1.1rem 0; border-bottom: 1px solid var(--light-line);
+      font-size: 0.95rem;
+    }
+    .award-name { font-weight: 400; }
+    .award-year {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.68rem; color: var(--warm-gray);
+    }
+
+    /* ── CONTACT ── */
+    #contact { background: var(--ink); color: var(--cream); }
+    #contact h2 { color: var(--cream); }
+    #contact .section-num { color: #B85C38; }
+
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+    .contact-info { }
+    .contact-label {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--warm-gray); margin-bottom: 0.4rem;
+    }
+    .contact-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.1rem; color: var(--cream);
+      text-decoration: none; display: block; margin-bottom: 2rem;
+    }
+    .contact-value:hover { color: var(--accent); }
+
+    .refs-grid { display: grid; gap: 1.5rem; }
+    .ref-card {
+      padding: 1.2rem 1.5rem;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .ref-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem; font-weight: 400; margin-bottom: 0.2rem;
+    }
+    .ref-title { font-size: 0.78rem; color: #AAA398; line-height: 1.5; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0E0C0A; color: var(--warm-gray);
+      padding: 2rem 8rem;
+      display: flex; justify-content: space-between; align-items: center;
+      font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 0.1em;
+    }
+
+    /* ── ANIMATIONS ── */
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 2rem; }
+      #hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { padding: 6rem 2rem 3rem; }
+      .hero-left::after { display: none; }
+      .hero-right { padding: 2rem; }
+      .hero-right { order: -1; }
+      section { padding: 4rem 2rem; }
+      .interests-grid { grid-template-columns: 1fr 1fr; }
+      .teaching-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      footer { flex-direction: column; gap: 1rem; text-align: center; padding: 2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-name">Lin Lei</span>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#awards">Awards</a></li>
+    <li><a href="#service">Service</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-tag">PhD Candidate · University of Maryland</p>
+    <h1>Lin<br><em>Lei</em></h1>
+    <p class="hero-subtitle">Marketing Analytics & AI Research</p>
+    <p class="hero-bio">
+      I study how large language models transform marketing capabilities — from organizational memory to causal inference and field experiments. My work bridges rigorous quantitative methods with emerging AI tools.
+    </p>
+    <div class="hero-links">
+      <a href="mailto:linlei@umd.edu" class="btn btn-primary">Get in Touch</a>
+      <a href="#research" class="btn btn-outline">View Research</a>
+      <a href="https://docs.google.com/document/d/12gHaD-THXDIocCOOcNBA44LHhEqvkDc-/edit?usp=sharing&rtpof=true&sd=true" target="_blank" class="btn btn-outline">Download CV</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="photo-frame">
+      <img src="LeiLin_FellowPhoto.JPG" alt="Lin Lei" />
+      <div class="affiliation-badge">
+        <span class="badge-label">Affiliation</span>
+        <span class="badge-value">Robert H. Smith School of Business</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH INTERESTS -->
+<section id="interests">
+  <div class="section-header fade-in">
+    <span class="section-num">00</span>
+    <h2>Research Interests</h2>
+  </div>
+  <div class="interests-grid">
+    <div class="interest-card fade-in">
+      <span class="interest-icon">🤖</span>
+      <p class="interest-label">Large Language Models Application</p>
+    </div>
+    <div class="interest-card fade-in">
+      <span class="interest-icon">📊</span>
+      <p class="interest-label">Marketing Analytics</p>
+    </div>
+    <div class="interest-card fade-in">
+      <span class="interest-icon">🔬</span>
+      <p class="interest-label">Causal Inference</p>
+    </div>
+    <div class="interest-card fade-in">
+      <span class="interest-icon">🧪</span>
+      <p class="interest-label">Field Experiments</p>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+  <div class="section-header fade-in">
+    <span class="section-num">01</span>
+    <h2>Research</h2>
+  </div>
+
+  <h3 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.4rem; margin-bottom:1.5rem; color:var(--warm-gray);">Under Review / Revision</h3>
+  <div class="research-grid" style="margin-bottom:3rem;">
+
+    <div class="paper-card fade-in">
+      <span class="paper-index">01</span>
+      <div>
+        <p class="paper-title">GenAI-enabled Organizational Memory as a Marketing Capability</p>
+        <p class="paper-authors"><strong>Lei, L.</strong>, Kannan, P.K.</p>
+        <div class="paper-meta">
+          <span class="journal-tag">Journal of Marketing</span>
+          <span class="status-pill status-rr">Reject & Resubmit</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card fade-in">
+      <span class="paper-index">02</span>
+      <div>
+        <p class="paper-title">Embedding Enterprise Knowledge in LLM-Enhanced AutoML</p>
+        <p class="paper-authors"><strong>Lei, L.</strong>, Huang, C., Mao, W., Ge, D., Kannan, P.K.</p>
+        <div class="paper-meta">
+          <span class="status-pill status-jmp">★ Job Market Paper</span>
+          <span class="journal-tag">Production and Operations Management</span>
+          <span class="status-pill status-review">Under Review (1st round)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card fade-in">
+      <span class="paper-index">03</span>
+      <div>
+        <p class="paper-title">Heterogeneous Effects of Open Access: A Freemium Strategy for Public Good</p>
+        <p class="paper-authors">Zhang, X., Gu, X., <strong>Lei, L.</strong></p>
+        <div class="paper-meta">
+          <span class="journal-tag">Journal of Marketing Research</span>
+          <span class="status-pill status-review">Under Review (2nd round)</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card fade-in">
+      <span class="paper-index">04</span>
+      <div>
+        <p class="paper-title">Too Much of a Good Thing: The Nonlinear Sales Impact of Manipulated Reviews</p>
+        <p class="paper-authors">Jiang, Y., <strong>Lei, L.</strong>, Wang, R., Zhu, Y.</p>
+        <div class="paper-meta">
+          <span class="journal-tag">Manufacturing & Service Operations Management (MSOM) 2026 Conference, Extended Abstract Track</span>
+          <span class="status-pill status-review">Under Review (1st round)</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.4rem; margin-bottom:1.5rem; color:var(--warm-gray);">Work in Progress</h3>
+  <div class="research-grid" style="margin-bottom:3rem;">
+
+    <div class="paper-card fade-in">
+      <span class="paper-index">04</span>
+      <div>
+        <p class="paper-title">Framing the New, Finding the Faults</p>
+        <p class="paper-authors"><strong>Lei, L.</strong>, Trusov, M.</p>
+        <div class="paper-meta">
+          <span class="status-pill status-progress">Draft Writing</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="paper-card fade-in">
+      <span class="paper-index">05</span>
+      <div>
+        <p class="paper-title">When Simplification Costs More Than Complexity: A Two-Stage Theory of Human vs. Algorithmic Pricing</p>
+        <p class="paper-authors"><strong>Lei, L.</strong>, He, S., Zhou, B., Wang, Z., Ge, D.</p>
+        <div class="paper-meta">
+          <span class="status-pill status-progress">Draft Writing</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <h3 style="font-family:'Cormorant Garamond',serif; font-weight:300; font-size:1.4rem; margin-bottom:1.5rem; color:var(--warm-gray);">Refereed Articles</h3>
+  <div class="research-grid">
+    <div class="paper-card fade-in">
+      <span class="paper-index">07</span>
+      <div>
+        <p class="paper-title">Optimization and Operations Research in Mitigation of a Pandemic</p>
+        <p class="paper-authors">Chen, C., Du, Y., Ge, D., <strong>Lei, L.</strong>, Ye, Y.</p>
+        <div class="paper-meta">
+          <span class="journal-tag">Journal of Operations Research Society in China</span>
+          <span class="status-pill status-published">Published 2022</span>
+          <a href="https://doi.org/10.1007/s40305-022-00391-y" style="font-family:'DM Mono',monospace;font-size:0.65rem;color:var(--accent);text-decoration:none;" target="_blank">DOI →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-header fade-in">
+    <span class="section-num">02</span>
+    <h2>Education</h2>
+  </div>
+  <div class="timeline">
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Aug 2021 – Present</p>
+      <p class="tl-title">PhD in Marketing</p>
+      <p class="tl-sub">University of Maryland, College Park · Minor: Information Systems</p>
+      <p class="tl-sub" style="font-style:italic;margin-top:0.3rem;">Dissertation: Leveraging Large Language Models in Marketing Analytics</p>
+    </div>
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Aug 2017 – Jun 2021</p>
+      <p class="tl-title">B.S. in Management Information Systems</p>
+      <p class="tl-sub">Shanghai University of Finance and Economics, Shanghai, China</p>
+    </div>
+    <div class="timeline-item fade-in">
+      <p class="tl-date">Jun 2019 – Aug 2019</p>
+      <p class="tl-title">Summer Session</p>
+      <p class="tl-sub">Stanford University, Stanford, California</p>
+    </div>
+  </div>
+</section>
+
+<!-- TEACHING -->
+<section id="teaching">
+  <div class="section-header fade-in">
+    <span class="section-num">03</span>
+    <h2>Teaching</h2>
+  </div>
+  <div class="teaching-grid">
+    <div class="course-card fade-in">
+      <p class="course-code">BMGT 351</p>
+      <p class="course-title">Marketing Research Methods</p>
+      <p class="course-role">Lecturer · Fall 2024, Spring 2026</p>
+    </div>
+    <div class="course-card fade-in">
+      <p class="course-code">BMGT 818Y</p>
+      <p class="course-title">Management Accounting and Cyber Risk Management</p>
+      <p class="course-role">PhD Seminar Invited Speaker · Fall 2025</p>
+    </div>
+    <div class="course-card fade-in">
+      <p class="course-code">BUMK 766</p>
+      <p class="course-title">Digital Analytics</p>
+      <p class="course-role">Teaching Assistant · Fall 2025</p>
+    </div>
+    <div class="course-card fade-in">
+      <p class="course-code">BMGT 458U</p>
+      <p class="course-title">Digital Marketing Analytics</p>
+      <p class="course-role">Teaching Assistant · Spring 2023, Spring 2024</p>
+    </div>
+  </div>
+</section>
+
+<!-- AWARDS -->
+<section id="awards">
+  <div class="section-header fade-in">
+    <span class="section-num">04</span>
+    <h2>Awards & Honors</h2>
+  </div>
+  <ul class="awards-list">
+    <li class="award-item fade-in">
+      <span class="award-name">AMA-Sheth Foundation Doctoral Consortium Fellow, New York</span>
+      <span class="award-year">2026</span>
+    </li>
+    <li class="award-item fade-in">
+      <span class="award-name">ISMS Doctoral Consortium Fellow, Washington D.C.</span>
+      <span class="award-year">2025</span>
+    </li>
+    <li class="award-item fade-in">
+      <span class="award-name">Haring Symposium DEI Award</span>
+      <span class="award-year">2024</span>
+    </li>
+    <li class="award-item fade-in">
+      <span class="award-name">Haring Symposium Fellow, Bloomington, Indiana</span>
+      <span class="award-year">2024</span>
+    </li>
+    <li class="award-item fade-in">
+      <span class="award-name">Intelligent Computation Conference, Shanghai</span>
+      <span class="award-year">2024</span>
+    </li>
+    <li class="award-item fade-in">
+      <span class="award-name">Ye Yinyu Scholarship</span>
+      <span class="award-year">2018</span>
+    </li>
+  </ul>
+
+</section>
+
+<!-- SERVICE -->
+<section id="service">
+  <div class="section-header fade-in">
+    <span class="section-num">05</span>
+    <h2>Academic Service</h2>
+  </div>
+  <ul class="awards-list">
+    <li class="award-item fade-in">
+      <span class="award-name">Ad Hoc Reviewer, <em>ICIS 2025</em></span>
+    </li>
+    <li class="award-item fade-in">
+      <span class="award-name">Seminar Organizer, Department of Marketing</span>
+      <span class="award-year">2024–2025</span>
+    </li>
+  </ul>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-header fade-in">
+    <span class="section-num">06</span>
+    <h2>Contact</h2>
+  </div>
+  <div style="display:grid; grid-template-columns: 1fr 1fr; gap:3rem;">
+    <div>
+      <p class="contact-label">Email</p>
+      <a href="mailto:linlei@umd.edu" class="contact-value">linlei@umd.edu</a>
+      <p class="contact-label">Address</p>
+      <span class="contact-value" style="cursor:default;">
+        Robert H. Smith School of Business<br>
+        University of Maryland<br>
+        College Park, MD 20742
+      </span>
+    </div>
+    <div style="display:flex; align-items:flex-start; padding-top:0.5rem;">
+      <a href="https://docs.google.com/document/d/12gHaD-THXDIocCOOcNBA44LHhEqvkDc-/edit?usp=sharing&rtpof=true&sd=true" target="_blank" class="btn btn-outline" style="border-color:rgba(255,255,255,0.3); color:var(--cream); font-size:0.72rem; padding:0.8rem 2rem;">Download CV →</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>Lin Lei © 2026</span>
+  <span>PhD Candidate · University of Maryland · Robert H. Smith School of Business</span>
+</footer>
+
+<script>
+  // Intersection Observer for fade-in animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
